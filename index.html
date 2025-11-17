@@ -6,6 +6,7 @@
     <title>
       Brandwox Solutions | Digital Marketing for UK Used Car Dealers
     </title>
+
     <meta
       name="description"
       content="Get more car buyers with high-converting websites, landing pages & ad systems for UK used car dealers. Fast delivery, proven designs, affordable pricing."
@@ -65,17 +66,20 @@
       fbq("init", "2041072573330202");
       fbq("track", "PageView");
     </script>
-    <noscript
-      ><img
-        height="1"
-        width="1"
-        style="display: none"
-        src="https://www.facebook.com/tr?id=2041072573330202&ev=PageView&noscript=1"
-    /></noscript>
     <!-- End Meta Pixel Code -->
   </head>
 
   <body>
+    <!-- Meta Pixel noscript image MUST be inside body -->
+    <noscript>
+      <img
+        height="1"
+        width="1"
+        style="display:none"
+        src="https://www.facebook.com/tr?id=2041072573330202&ev=PageView&noscript=1"
+      />
+    </noscript>
+
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
