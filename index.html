@@ -3,32 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Brandwox Solutions | Digital Marketing for UK Used Car Dealers</title>
 
+    <!-- SEO Meta Tags -->
     <meta
       name="description"
-      content="Get more car buyers with high-converting websites, landing pages & ad systems for UK used car dealers. Fast delivery, proven designs, affordable pricing."
+      content="Digital marketing services for UK used car dealers. High-converting landing pages, lead systems, and website solutions to increase car buyer leads."
     />
     <meta name="author" content="Brandwox Solutions" />
     <meta
       name="keywords"
-      content="car dealer marketing, used car dealer websites, UK car dealership digital marketing, car dealer landing pages"
+      content="UK used car dealer marketing, car dealer websites, automotive marketing UK, car dealership landing pages"
     />
 
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
     <meta
       property="og:title"
       content="Brandwox Solutions | Digital Marketing for UK Used Car Dealers"
     />
     <meta
       property="og:description"
-      content="Get more car buyers with high-converting websites, landing pages & ad systems for UK used car dealers. Fast delivery, proven designs, affordable pricing."
+      content="Digital marketing systems for UK used car dealers to get more leads and more sales."
     />
-    <meta property="og:type" content="website" />
     <meta
       property="og:image"
       content="https://lovable.dev/opengraph-image-p98pqg.png"
     />
+    <meta property="og:url" content="https://brandwox-uk-dealers.netlify.app/" />
 
+    <!-- Twitter Meta -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@BrandwoxSolutions" />
     <meta
@@ -62,15 +67,15 @@
         "https://connect.facebook.net/en_US/fbevents.js"
       );
 
-      fbq("init", "2041072573330202");
+      fbq("init", "2041072573330202"); // your pixel ID
       fbq("track", "PageView");
-      fbq("trackCustom", "LandingVisited"); // 🔥 custom event to track every visitor
+      fbq("trackCustom", "LandingVisited");
     </script>
     <!-- End Meta Pixel Code -->
   </head>
 
   <body>
-    <!-- This must stay inside <body> -->
+    <!-- Pixel fallback for no-JS visitors -->
     <noscript>
       <img
         height="1"
