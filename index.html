@@ -3,9 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      Brandwox Solutions | Digital Marketing for UK Used Car Dealers
-    </title>
+    <title>Brandwox Solutions | Digital Marketing for UK Used Car Dealers</title>
 
     <meta
       name="description"
@@ -63,14 +61,16 @@
         "script",
         "https://connect.facebook.net/en_US/fbevents.js"
       );
+
       fbq("init", "2041072573330202");
       fbq("track", "PageView");
+      fbq("trackCustom", "LandingVisited"); // 🔥 custom event to track every visitor
     </script>
     <!-- End Meta Pixel Code -->
   </head>
 
   <body>
-    <!-- Meta Pixel noscript image MUST be inside body -->
+    <!-- This must stay inside <body> -->
     <noscript>
       <img
         height="1"
