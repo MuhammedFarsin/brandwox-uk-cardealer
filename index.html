@@ -1,23 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- BASIC SETUP -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Brandwox Solutions | Digital Marketing for UK Used Car Dealers</title>
+    <title>
+      Brandwox Solutions | Digital Marketing for UK Used Car Dealers
+    </title>
 
-    <!-- SEO Meta Tags -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+
+    <!-- PRIMARY SEO TAGS -->
     <meta
       name="description"
-      content="Digital marketing services for UK used car dealers. High-converting landing pages, lead systems, and website solutions to increase car buyer leads."
+      content="Digital marketing solutions for UK used car dealers. High-converting landing pages, lead generation systems, and website designs tailored to increase car buyer enquiries."
     />
-    <meta name="author" content="Brandwox Solutions" />
     <meta
       name="keywords"
-      content="UK used car dealer marketing, car dealer websites, automotive marketing UK, car dealership landing pages"
+      content="UK used car dealers marketing, car dealer websites UK, automotive marketing agency UK, car dealership digital marketing, used car dealer landing pages"
     />
+    <meta name="author" content="Brandwox Solutions" />
 
-    <!-- Open Graph -->
+    <!-- CANONICAL URL -->
+    <link rel="canonical" href="https://brandwox-uk-dealers.netlify.app/" />
+
+    <!-- OPEN GRAPH (FACEBOOK / WHATSAPP / LINK PREVIEW) -->
     <meta property="og:type" content="website" />
     <meta
       property="og:title"
@@ -25,15 +34,18 @@
     />
     <meta
       property="og:description"
-      content="Digital marketing systems for UK used car dealers to get more leads and more sales."
+      content="Get more leads and more car buyer enquiries with high-converting landing pages and marketing systems built for UK used car dealers."
     />
     <meta
       property="og:image"
       content="https://lovable.dev/opengraph-image-p98pqg.png"
     />
-    <meta property="og:url" content="https://brandwox-uk-dealers.netlify.app/" />
+    <meta
+      property="og:url"
+      content="https://brandwox-uk-dealers.netlify.app/"
+    />
 
-    <!-- Twitter Meta -->
+    <!-- TWITTER META TAGS -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@BrandwoxSolutions" />
     <meta
@@ -41,7 +53,25 @@
       content="https://lovable.dev/opengraph-image-p98pqg.png"
     />
 
-    <!-- Meta Pixel Code -->
+    <!-- STRUCTURED DATA (SCHEMA.ORG) FOR SEO BOOST -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Brandwox Solutions",
+        "description": "Digital marketing and website systems for UK used car dealers.",
+        "url": "https://brandwox-uk-dealers.netlify.app/",
+        "image": "https://lovable.dev/opengraph-image-p98pqg.png",
+        "areaServed": "United Kingdom",
+        "servesCuisine": "",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "UK"
+        }
+      }
+    </script>
+
+    <!-- FACEBOOK META PIXEL -->
     <script>
       !(function (f, b, e, v, n, t, s) {
         if (f.fbq) return;
@@ -67,24 +97,25 @@
         "https://connect.facebook.net/en_US/fbevents.js"
       );
 
-      fbq("init", "2041072573330202"); // your pixel ID
+      fbq("init", "2041072573330202");
       fbq("track", "PageView");
       fbq("trackCustom", "LandingVisited");
     </script>
-    <!-- End Meta Pixel Code -->
+    <!-- END META PIXEL -->
   </head>
 
   <body>
-    <!-- Pixel fallback for no-JS visitors -->
+    <!-- NO-SCRIPT PIXEL FALLBACK -->
     <noscript>
       <img
         height="1"
         width="1"
-        style="display:none"
+        style="display: none"
         src="https://www.facebook.com/tr?id=2041072573330202&ev=PageView&noscript=1"
       />
     </noscript>
 
+    <!-- ROOT FOR YOUR REACT APP -->
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
