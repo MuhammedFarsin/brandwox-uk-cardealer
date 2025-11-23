@@ -155,7 +155,11 @@ const Index = () => {
     },
   ];
 
-  function gtag(arg0: string, arg1: string, arg2: { event_category: string; event_label: string; }) {
+  function gtag(
+    arg0: string,
+    arg1: string,
+    arg2: { event_category: string; event_label: string }
+  ) {
     throw new Error("Function not implemented.");
   }
 
@@ -190,20 +194,19 @@ const Index = () => {
             </div>
 
             <div className="mb-12 flex flex-wrap justify-center gap-4 animate-fade-in">
-              <Button
-                size="lg"
-                className="bg-gradient-accent shadow-glow-accent hover:shadow-xl text-lg px-8 py-6"
-                onClick={() => {
-                  gtag("event", "lead_click", {
-                    event_category: "Lead",
-                    event_label: "WhatsApp Audit Button",
-                  });
-                  window.open("https://wa.me/919207509746", "_blank");
-                }}
+              <a
+                href="https://wa.me/919207509746"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                Schedule Free Audit
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
+                <Button
+                  size="lg"
+                  className="bg-gradient-accent shadow-glow-accent hover:shadow-xl text-lg px-8 py-6"
+                >
+                  Schedule Free Audit
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </a>
 
               <Button
                 size="lg"
