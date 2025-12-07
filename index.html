@@ -1,53 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-LVP3JXJ4KT"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-
-      gtag("config", "G-LVP3JXJ4KT");
-    </script>
     <!-- BASIC SETUP -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>
-      Brandwox Solutions | Digital Marketing for UK Used Car Dealers
-    </title>
+    <title>BrandWox | UK Used Car Dealer Marketing</title>
 
-    <link rel="icon" type="image/png" href="/brandwox-preview.ico" />
-    <link rel="apple-touch-icon" href="/brandwox-preview.ico" />
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="logo-icon.png" />
+    <link rel="apple-touch-icon" href="logo-icon.png" />
 
     <!-- PRIMARY SEO TAGS -->
     <meta
       name="description"
-      content="Digital marketing solutions for UK used car dealers. High-converting landing pages, lead generation systems, and website designs tailored to increase car buyer enquiries."
+      content="BrandWox helps UK used car dealers get more buyer enquiries with high-converting landing pages, modern dealer websites, and targeted Meta ads."
     />
     <meta
       name="keywords"
-      content="UK used car dealers marketing, car dealer websites UK, automotive marketing agency UK, car dealership digital marketing, used car dealer landing pages"
+      content="BrandWox, UK used car dealer marketing, car dealer websites UK, automotive marketing UK, car dealership landing pages, used car dealer ads UK"
     />
-    <meta name="author" content="Brandwox Solutions" />
+    <meta name="author" content="BrandWox" />
 
     <!-- CANONICAL URL -->
     <link rel="canonical" href="https://brandwox-uk-dealers.netlify.app/" />
 
-    <!-- OPEN GRAPH (FACEBOOK / WHATSAPP / LINK PREVIEW) -->
+    <!-- OPEN GRAPH (FACEBOOK / WHATSAPP / INSTAGRAM PREVIEW) -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="BrandWox" />
     <meta
       property="og:title"
-      content="Brandwox Solutions | Digital Marketing for UK Used Car Dealers"
+      content="BrandWox | UK Used Car Dealer Marketing"
     />
     <meta
       property="og:description"
-      content="Get more leads and more car buyer enquiries with high-converting landing pages and marketing systems built for UK used car dealers."
+      content="High-converting landing pages, dealer websites, and Meta ads built specifically for UK used car dealers."
     />
     <meta
       property="og:image"
@@ -60,21 +47,35 @@
 
     <!-- TWITTER META TAGS -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@BrandwoxSolutions" />
+    <meta name="twitter:title" content="BrandWox | UK Used Car Dealer Marketing" />
+    <meta
+      name="twitter:description"
+      content="Get more buyer enquiries with high-converting landing pages and ads built for UK used car dealers."
+    />
     <meta
       name="twitter:image"
       content="https://brandwox-uk-dealers.netlify.app/brandwox-preview.png"
     />
 
+    <!-- JSON-LD STRUCTURED DATA -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "image": "https://brandwox-uk-dealers.netlify.app/brandwox-preview.png"
+        "@type": "Organization",
+        "name": "BrandWox",
+        "url": "https://brandwox-uk-dealers.netlify.app/",
+        "logo": "https://brandwox-uk-dealers.netlify.app/brandwox-icon.png",
+        "description": "BrandWox builds landing pages, websites and ads for UK used car dealers.",
+        "sameAs": [
+          "https://facebook.com/brandwox",
+          "https://instagram.com/brandwox"
+        ],
+        "areaServed": "United Kingdom",
+        "brand": "BrandWox"
       }
     </script>
 
-    <!-- FACEBOOK META PIXEL -->
+    <!-- META PIXEL -->
     <script>
       !(function (f, b, e, v, n, t, s) {
         if (f.fbq) return;
@@ -102,23 +103,21 @@
 
       fbq("init", "2041072573330202");
       fbq("track", "PageView");
-      fbq("trackCustom", "LandingVisited");
     </script>
-    <!-- END META PIXEL -->
   </head>
 
   <body>
-    <!-- NO-SCRIPT PIXEL FALLBACK -->
+    <!-- NO-SCRIPT FALLBACK FOR META PIXEL -->
     <noscript>
       <img
         height="1"
         width="1"
-        style="display: none"
+        style="display:none"
         src="https://www.facebook.com/tr?id=2041072573330202&ev=PageView&noscript=1"
       />
     </noscript>
 
-    <!-- ROOT FOR YOUR REACT APP -->
+    <!-- ROOT APP -->
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
