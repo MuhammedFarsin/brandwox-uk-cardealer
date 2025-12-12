@@ -15,46 +15,79 @@ import {
   MessageCircle,
 } from "lucide-react";
 
+// define once outside component so it's not recreated every render
+const NAV_ITEMS = [
+  { label: "Home", id: "home", icon: Home },
+  { label: "About", id: "about", icon: Info },
+  { label: "Services", id: "services", icon: Settings2 },
+  { label: "Pricing", id: "pricing", icon: PoundSterling },
+  { label: "FAQ", id: "faq", icon: HelpCircle },
+] as const;
+
 const Navbar = () => {
-  const [active, setActive] = useState("Home");
+  const [active, setActive] = useState<string>("Home");
   const [shadow, setShadow] = useState(false);
   const [shrink, setShrink] = useState(false);
 
-  const navItems = [
-    { label: "Home", id: "home", icon: Home },
-    { label: "About", id: "about", icon: Info },
-    { label: "Services", id: "services", icon: Settings2 },
-    { label: "Pricing", id: "pricing", icon: PoundSterling },
-    { label: "FAQ", id: "faq", icon: HelpCircle },
-  ];
-
-  // Scroll effects
   useEffect(() => {
+    // cache DOM refs once
+    const sections = NAV_ITEMS.map((item) => ({
+      label: item.label,
+      id: item.id,
+      el: document.getElementById(item.id),
+    }));
+
+    let lastActive = "Home";
+    let lastShadow = false;
+    let lastShrink = false;
+    let ticking = false;
+
     const handleScroll = () => {
-      setShadow(window.scrollY > 10);
-      setShrink(window.scrollY > 70);
+      const scrollY = window.scrollY;
+
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const nextShadow = scrollY > 10;
+          const nextShrink = scrollY > 70;
+
+          // detect active section (only once per frame)
+          let nextActive = lastActive;
+          for (const s of sections) {
+            if (!s.el) continue;
+            const rect = s.el.getBoundingClientRect();
+            if (rect.top <= 150 && rect.bottom >= 150) {
+              nextActive = s.label;
+              break;
+            }
+          }
+
+          // only update React state if something actually changed
+          if (
+            nextShadow !== lastShadow ||
+            nextShrink !== lastShrink ||
+            nextActive !== lastActive
+          ) {
+            lastShadow = nextShadow;
+            lastShrink = nextShrink;
+            lastActive = nextActive;
+
+            setShadow(nextShadow);
+            setShrink(nextShrink);
+            setActive(nextActive);
+          }
+
+          ticking = false;
+        });
+
+        ticking = true;
+      }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    // run once on mount so nav matches initial position
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // Section active detection
-  useEffect(() => {
-    const trackActive = () => {
-      navItems.forEach((item) => {
-        const section = document.getElementById(item.id);
-        if (!section) return;
-
-        const rect = section.getBoundingClientRect();
-        if (rect.top <= 150 && rect.bottom >= 150) {
-          setActive(item.label);
-        }
-      });
-    };
-
-    window.addEventListener("scroll", trackActive);
-    return () => window.removeEventListener("scroll", trackActive);
   }, []);
 
   return (
@@ -71,7 +104,6 @@ const Navbar = () => {
         `}
       >
         <div className="container mx-auto px-4 h-full flex items-center justify-between">
-          
           {/* LOGO */}
           <div className="flex items-center">
             {/* Desktop: Full Logo */}
@@ -79,7 +111,7 @@ const Navbar = () => {
               src={logo_with_name}
               alt="Brandwox"
               className={`hidden md:block transition-all duration-300 ${
-                shrink ? "h-60" : "h-60"
+                shrink ? "h-32" : "h-40"
               }`}
             />
 
@@ -88,14 +120,14 @@ const Navbar = () => {
               src={logo}
               alt="Brandwox"
               className={`md:hidden transition-all duration-300 ${
-                shrink ? "h-20" : "h-20"
+                shrink ? "h-10" : "h-12"
               }`}
             />
           </div>
 
           {/* DESKTOP MENU */}
           <nav className="hidden md:flex items-center gap-8 relative">
-            {navItems.map((item) => (
+            {NAV_ITEMS.map((item) => (
               <a
                 key={item.id}
                 href={`/#${item.id}`}
@@ -111,7 +143,7 @@ const Navbar = () => {
                 {item.label}
 
                 {active === item.label && (
-                  <span className="absolute left-0 -bottom-1 h-[2px] w-full bg-[#0A4DFF] rounded-full"></span>
+                  <span className="absolute left-0 -bottom-1 h-[2px] w-full bg-[#0A4DFF] rounded-full" />
                 )}
               </a>
             ))}
@@ -137,7 +169,7 @@ const Navbar = () => {
         "
       >
         <div className="flex justify-around py-3">
-          {navItems.map((item) => {
+          {NAV_ITEMS.map((item) => {
             const Icon = item.icon;
             const isActive = active === item.label;
 
@@ -157,7 +189,7 @@ const Navbar = () => {
                     ${isActive ? "scale-110 shadow-xl" : "scale-95 opacity-85"}
                   `}
                 >
-                  <div className="absolute inset-0 rounded-2xl bg-white/10 blur-[6px]"></div>
+                  <div className="absolute inset-0 rounded-2xl bg-white/10 blur-[6px]" />
                   <Icon className="h-5 w-5 text-[#111] relative z-10" />
                 </div>
 
@@ -188,7 +220,7 @@ const Navbar = () => {
                 active:scale-110
               "
             >
-              <div className="absolute inset-0 rounded-2xl bg-white/10 blur-[6px]"></div>
+              <div className="absolute inset-0 rounded-2xl bg-white/10 blur-[6px]" />
               <MessageCircle className="h-5 w-5 text-white relative z-10" />
             </div>
 
