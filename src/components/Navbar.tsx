@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 
-// Full logo (desktop)
 import logo_with_name from "/icon.png";
-// Icon only (mobile)
 import logo from "/logo-icon.png";
 
 import {
@@ -15,7 +13,6 @@ import {
   MessageCircle,
 } from "lucide-react";
 
-// define once outside component so it's not recreated every render
 const NAV_ITEMS = [
   { label: "Home", id: "home", icon: Home },
   { label: "About", id: "about", icon: Info },
@@ -30,7 +27,6 @@ const Navbar = () => {
   const [shrink, setShrink] = useState(false);
 
   useEffect(() => {
-    // cache DOM refs once
     const sections = NAV_ITEMS.map((item) => ({
       label: item.label,
       id: item.id,
@@ -50,7 +46,6 @@ const Navbar = () => {
           const nextShadow = scrollY > 10;
           const nextShrink = scrollY > 70;
 
-          // detect active section (only once per frame)
           let nextActive = lastActive;
           for (const s of sections) {
             if (!s.el) continue;
@@ -61,7 +56,6 @@ const Navbar = () => {
             }
           }
 
-          // only update React state if something actually changed
           if (
             nextShadow !== lastShadow ||
             nextShrink !== lastShrink ||
@@ -83,9 +77,7 @@ const Navbar = () => {
       }
     };
 
-    // run once on mount so nav matches initial position
     handleScroll();
-
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -98,7 +90,6 @@ const Navbar = () => {
           fixed top-0 left-0 w-full z-50 
           backdrop-blur-xl bg-white/40
           border-b border-white/20
-          transition-all duration-300
           ${shadow ? "shadow-lg" : ""}
           ${shrink ? "h-14" : "h-20"}
         `}
@@ -106,22 +97,18 @@ const Navbar = () => {
         <div className="container mx-auto px-4 h-full flex items-center justify-between">
           {/* LOGO */}
           <div className="flex items-center">
-            {/* Desktop: Full Logo */}
+            {/* Desktop Logo */}
             <img
               src={logo_with_name}
               alt="Brandwox"
-              className={`hidden md:block transition-all duration-300 ${
-                shrink ? "h-32" : "h-40"
-              }`}
+              className={`hidden md:block ${shrink ? "h-32" : "h-40"}`}
             />
 
-            {/* Mobile: Icon Only */}
+            {/* Mobile Icon */}
             <img
               src={logo}
               alt="Brandwox"
-              className={`md:hidden transition-all duration-300 ${
-                shrink ? "h-10" : "h-12"
-              }`}
+              className={`md:hidden ${shrink ? "h-10" : "h-12"}`}
             />
           </div>
 
@@ -132,11 +119,11 @@ const Navbar = () => {
                 key={item.id}
                 href={`/#${item.id}`}
                 className={`
-                  text-sm font-medium relative transition 
+                  text-sm font-medium relative
                   ${
                     active === item.label
                       ? "text-[#0A4DFF]"
-                      : "text-foreground hover:text-[#0A4DFF]"
+                      : "text-foreground"
                   }
                 `}
               >
@@ -149,7 +136,7 @@ const Navbar = () => {
             ))}
 
             <a href="https://wa.me/919207509746" target="_blank">
-              <Button className="bg-[#0A4DFF] text-white hover:bg-[#083FCC] px-6 py-2">
+              <Button className="bg-[#0A4DFF] text-white px-6 py-2">
                 WhatsApp
               </Button>
             </a>
@@ -157,7 +144,7 @@ const Navbar = () => {
         </div>
       </header>
 
-      {/* MOBILE 3D NAV */}
+      {/* MOBILE NAV */}
       <div
         className="
           md:hidden 
@@ -177,7 +164,7 @@ const Navbar = () => {
               <a
                 key={item.id}
                 href={`/#${item.id}`}
-                className="flex flex-col items-center gap-1 transition-all"
+                className="flex flex-col items-center gap-1"
               >
                 <div
                   className={`
@@ -185,12 +172,10 @@ const Navbar = () => {
                     bg-gradient-to-br from-[#FFE07A] via-[#FFC700] to-[#E5A400]
                     shadow-[0_6px_16px_rgba(0,0,0,0.25)]
                     border border-white/50
-                    relative transition-all duration-300
-                    ${isActive ? "scale-110 shadow-xl" : "scale-95 opacity-85"}
+                    ${isActive ? "" : ""}
                   `}
                 >
-                  <div className="absolute inset-0 rounded-2xl bg-white/10 blur-[6px]" />
-                  <Icon className="h-5 w-5 text-[#111] relative z-10" />
+                  <Icon className="h-5 w-5 text-[#111]" />
                 </div>
 
                 <span
@@ -204,11 +189,11 @@ const Navbar = () => {
             );
           })}
 
-          {/* WhatsApp 3D BUTTON */}
+          {/* WhatsApp BUTTON */}
           <a
             href="https://wa.me/919207509746"
             target="_blank"
-            className="flex flex-col items-center gap-1 transition-all"
+            className="flex flex-col items-center gap-1"
           >
             <div
               className="
@@ -216,12 +201,9 @@ const Navbar = () => {
                 bg-gradient-to-br from-[#7CFF9C] via-[#25D366] to-[#128C3C]
                 shadow-[0_6px_16px_rgba(0,0,0,0.25)]
                 border border-white/50
-                relative transition-all duration-300
-                active:scale-110
               "
             >
-              <div className="absolute inset-0 rounded-2xl bg-white/10 blur-[6px]" />
-              <MessageCircle className="h-5 w-5 text-white relative z-10" />
+              <MessageCircle className="h-5 w-5 text-white" />
             </div>
 
             <span className="text-[10px] font-medium text-[#128C3C]">
@@ -240,7 +222,6 @@ const Navbar = () => {
           fixed bottom-6 right-6 
           bg-[#25D366] text-white 
           p-3 rounded-full shadow-lg 
-          hover:scale-110 transition-all
           z-50
         "
       >
