@@ -24,7 +24,6 @@ const NAV_ITEMS = [
 const Navbar = () => {
   const [active, setActive] = useState<string>("Home");
   const [shadow, setShadow] = useState(false);
-  const [shrink, setShrink] = useState(false);
 
   useEffect(() => {
     const sections = NAV_ITEMS.map((item) => ({
@@ -35,7 +34,6 @@ const Navbar = () => {
 
     let lastActive = "Home";
     let lastShadow = false;
-    let lastShrink = false;
     let ticking = false;
 
     const handleScroll = () => {
@@ -44,7 +42,6 @@ const Navbar = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           const nextShadow = scrollY > 10;
-          const nextShrink = scrollY > 70;
 
           let nextActive = lastActive;
           for (const s of sections) {
@@ -56,17 +53,11 @@ const Navbar = () => {
             }
           }
 
-          if (
-            nextShadow !== lastShadow ||
-            nextShrink !== lastShrink ||
-            nextActive !== lastActive
-          ) {
+          if (nextShadow !== lastShadow || nextActive !== lastActive) {
             lastShadow = nextShadow;
-            lastShrink = nextShrink;
             lastActive = nextActive;
 
             setShadow(nextShadow);
-            setShrink(nextShrink);
             setActive(nextActive);
           }
 
@@ -90,8 +81,8 @@ const Navbar = () => {
           fixed top-0 left-0 w-full z-50 
           backdrop-blur-xl bg-white/40
           border-b border-white/20
+          h-20
           ${shadow ? "shadow-lg" : ""}
-          ${shrink ? "h-14" : "h-20"}
         `}
       >
         <div className="container mx-auto px-4 h-full flex items-center justify-between">
@@ -101,14 +92,14 @@ const Navbar = () => {
             <img
               src={logo_with_name}
               alt="Brandwox"
-              className={`hidden md:block ${shrink ? "h-32" : "h-40"}`}
+              className="hidden md:block h-36"
             />
 
             {/* Mobile Icon */}
             <img
               src={logo}
               alt="Brandwox"
-              className={`md:hidden ${shrink ? "h-10" : "h-12"}`}
+              className="md:hidden h-12"
             />
           </div>
 
@@ -167,13 +158,12 @@ const Navbar = () => {
                 className="flex flex-col items-center gap-1"
               >
                 <div
-                  className={`
+                  className="
                     h-12 w-12 rounded-2xl flex items-center justify-center
                     bg-gradient-to-br from-[#FFE07A] via-[#FFC700] to-[#E5A400]
                     shadow-[0_6px_16px_rgba(0,0,0,0.25)]
                     border border-white/50
-                    ${isActive ? "" : ""}
-                  `}
+                  "
                 >
                   <Icon className="h-5 w-5 text-[#111]" />
                 </div>
