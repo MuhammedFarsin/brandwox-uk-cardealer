@@ -145,8 +145,8 @@ const Index = () => {
               </h1>
 
               <p className="text-xl md:text-2xl text-muted-foreground mb-10">
-                High-converting landing pages, dealer websites, and Meta ads
-                that generate real enquiries.
+                We help small UK car dealers increase buyer trust and leads by
+                fixing their website and online system.
               </p>
 
               <div
@@ -191,7 +191,9 @@ const Index = () => {
             About Brandwox
           </h2>
 
-          <p className={`text-lg md:text-xl text-muted-foreground mb-6 ${fadeUp}`}>
+          <p
+            className={`text-lg md:text-xl text-muted-foreground mb-6 ${fadeUp}`}
+          >
             Brandwox helps UK used car dealers get more buyer enquiries with
             high-converting landing pages, modern dealer websites, and targeted
             Meta ads.
@@ -208,7 +210,9 @@ const Index = () => {
       <section id="services" className="py-24 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className={`text-center mb-16 ${fade}`}>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Our Services</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              Our Services
+            </h2>
             <p className="text-xl text-muted-foreground">
               Premium digital solutions for UK used car dealerships.
             </p>
@@ -227,7 +231,9 @@ const Index = () => {
       {/* DEMO SECTION */}
       <section id="demo" className="py-24 bg-background">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">See It In Action</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            See It In Action
+          </h2>
           <p className="text-xl text-muted-foreground mb-10">
             A real dealer landing page built with our framework.
           </p>
@@ -473,8 +479,6 @@ const Index = () => {
 };
 
 export default Index;
-
-
 
 // -------------------------------------------------------------------
 // 🔥 HERO SKELETON (DROP THIS INTO SAME FILE OR SEPARATE COMPONENT)
