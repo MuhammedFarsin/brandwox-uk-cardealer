@@ -141,12 +141,11 @@ const Index = () => {
           <div className="container mx-auto px-4 relative z-10">
             <div className={`max-w-4xl mx-auto text-center ${fade}`}>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
-                More Buyer Enquiries for UK Used Car Dealers — Fast.
+                We Build Fast, Trusted Websites for UK Used Car Dealers Who Don’t Have One Yet.
               </h1>
 
               <p className="text-xl md:text-2xl text-muted-foreground mb-10">
-                We help small UK car dealers increase buyer trust and leads by
-                fixing their website and online system.
+                More calls. More WhatsApp enquiries. Better buyer trust. No monthly fees. 5–7 day delivery.
               </p>
 
               <div
