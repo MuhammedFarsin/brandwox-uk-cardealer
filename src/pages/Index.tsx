@@ -141,7 +141,7 @@ const Index = () => {
           <div className="container mx-auto px-4 relative z-10">
             <div className={`max-w-4xl mx-auto text-center ${fade}`}>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
-                We Build Fast, Trusted Websites for UK Used Car Dealers Who Don’t Have One Yet.
+                No Website = Fewer Buyers, Calls & WhatsApp Leads. We Build UK Dealer Sites That Change That.
               </h1>
 
               <p className="text-xl md:text-2xl text-muted-foreground mb-10">
