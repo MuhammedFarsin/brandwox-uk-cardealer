@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { MessageCircle, ClipboardCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-dealership.webp";
@@ -10,6 +11,8 @@ const FREE_AUDIT_REQUEST = `https://wa.me/919207509746?text=${encodeURIComponent
 )}`;
 
 const HeroSection = () => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
   const handleWhatsAppClick = () => {
     window.open(WHATSAPP_LINK, "_blank");
   };
@@ -20,13 +23,6 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-[80vh] sm:min-h-[85vh] lg:min-h-[90vh] flex items-center hero-gradient overflow-hidden">
-
-      {/* Background */}
-      {/* <div className="absolute inset-0 opacity-15">
-        <div className="absolute top-20 left-10 w-48 sm:w-72 h-48 sm:h-72 bg-violet-300 rounded-full blur-lg" />
-        <div className="absolute bottom-20 right-10 w-64 sm:w-96 h-64 sm:h-96 bg-blue-300 rounded-full blur-lg" />
-      </div> */}
-
       <div className="container relative z-10 py-8 sm:py-10 lg:py-24">
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center">
 
@@ -95,20 +91,36 @@ const HeroSection = () => {
 
           </div>
 
-          {/* IMAGE — FIX: removed loading="lazy", removed useState skeleton, added eager */}
+          {/* IMAGE with smooth loading */}
           <div className="w-full max-w-sm sm:max-w-md lg:max-w-none">
             <div className="relative">
               <div className="absolute -inset-4 bg-accent/20 rounded-2xl blur-2xl hidden lg:block" />
-              <img
-                src={heroImage}
-                alt="Professional car dealership showroom"
-                className="relative rounded-xl lg:rounded-2xl shadow-xl lg:shadow-2xl w-full object-cover aspect-[4/3] ring-1 ring-accent/20"
-                loading="eager"
-                fetchPriority="high"
-                decoding="sync"
-                width={600}
-                height={450}
-              />
+              
+              {/* Container with fixed aspect ratio to prevent layout shift */}
+              <div className="relative aspect-[4/3] rounded-xl lg:rounded-2xl overflow-hidden ring-1 ring-accent/20 bg-secondary/50">
+                
+                {/* Gradient placeholder - shows instantly while image loads */}
+                <div 
+                  className={`absolute inset-0 bg-gradient-to-br from-secondary via-secondary/80 to-accent/20 transition-opacity duration-500 ${
+                    imageLoaded ? "opacity-0" : "opacity-100"
+                  }`}
+                />
+                
+                {/* Actual hero image */}
+                <img
+                  src={heroImage}
+                  alt="Professional car dealership showroom"
+                  onLoad={() => setImageLoaded(true)}
+                  className={`relative w-full h-full object-cover shadow-xl lg:shadow-2xl transition-opacity duration-500 ${
+                    imageLoaded ? "opacity-100" : "opacity-0"
+                  }`}
+                  loading="eager"
+                  fetchPriority="high"
+                  decoding="async"
+                  width={600}
+                  height={450}
+                />
+              </div>
             </div>
           </div>
 
