@@ -2,118 +2,122 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
+/* ================= BASE VARIABLES ================= */
 @layer base {
   :root {
-    --background: 220 25% 98%;
-    --foreground: 220 15% 15%;
+    --background: 0 0% 95%;
+    --foreground: 0 0% 7%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 15% 15%;
+    --card-foreground: 0 0% 7%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 15% 15%;
+    --popover-foreground: 0 0% 7%;
 
-    --primary: 215 70% 50%;
+    --primary: 220 100% 52%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 20% 96%;
-    --secondary-foreground: 220 15% 15%;
+    --secondary: 0 0% 7%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 220 20% 94%;
-    --muted-foreground: 220 10% 45%;
+    --accent: 47 100% 50%;
+    --accent-foreground: 0 0% 7%;
 
-    --accent: 25 95% 55%;
-    --accent-foreground: 0 0% 100%;
+    --muted: 0 0% 95%;
+    --muted-foreground: 0 0% 40%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 20% 90%;
-    --input: 220 20% 90%;
-    --ring: 215 70% 50%;
+    --border: 0 0% 88%;
+    --input: 0 0% 88%;
+    --ring: 220 100% 52%;
 
     --radius: 0.75rem;
 
-    /* Brand colors */
-    --brand-blue: 215 70% 50%;
-    --brand-blue-light: 215 70% 60%;
-    --brand-blue-dark: 215 70% 40%;
-    --brand-orange: 25 95% 55%;
-    --brand-orange-light: 25 95% 65%;
-    
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(215 70% 50%) 0%, hsl(195 70% 55%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(25 95% 55%) 0%, hsl(10 90% 55%) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(215 70% 98%) 0%, hsl(195 60% 95%) 100%);
-    
-    /* Shadows */
-    --shadow-sm: 0 2px 4px -1px hsl(220 15% 15% / 0.06);
-    --shadow-md: 0 4px 8px -2px hsl(220 15% 15% / 0.1);
-    --shadow-lg: 0 12px 24px -4px hsl(220 15% 15% / 0.12);
-    --shadow-xl: 0 24px 48px -8px hsl(220 15% 15% / 0.15);
-    --shadow-glow: 0 0 32px hsl(215 70% 50% / 0.3);
-    --shadow-glow-accent: 0 0 32px hsl(25 95% 55% / 0.3);
+    /* 🔥 Optimized gradients (lighter) */
+    --hero-gradient: linear-gradient(135deg, hsl(220 60% 25%), hsl(260 50% 40%));
+    --cta-gradient: linear-gradient(135deg, hsl(47 100% 50%), hsl(42 90% 45%));
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* 🔥 Optimized shadows (reduced blur = better performance) */
+    --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.08);
+    --shadow-elevated: 0 6px 20px rgba(0, 0, 0, 0.12);
+    --shadow-cta: 0 2px 12px rgba(255, 200, 0, 0.35);
   }
 
   .dark {
-    --background: 220 20% 10%;
-    --foreground: 220 15% 95%;
-
-    --card: 220 18% 12%;
-    --card-foreground: 220 15% 95%;
-
-    --popover: 220 18% 12%;
-    --popover-foreground: 220 15% 95%;
-
-    --primary: 215 70% 55%;
+    --background: 0 0% 7%;
+    --foreground: 0 0% 95%;
+    --card: 0 0% 12%;
+    --card-foreground: 0 0% 95%;
+    --popover: 0 0% 12%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 220 100% 60%;
     --primary-foreground: 0 0% 100%;
-
-    --secondary: 220 15% 18%;
-    --secondary-foreground: 220 15% 95%;
-
-    --muted: 220 15% 18%;
-    --muted-foreground: 220 10% 60%;
-
-    --accent: 25 95% 60%;
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 220 15% 20%;
-    --input: 220 15% 20%;
-    --ring: 215 70% 55%;
-    
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --secondary: 0 0% 90%;
+    --secondary-foreground: 0 0% 7%;
+    --accent: 47 100% 50%;
+    --accent-foreground: 0 0% 7%;
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 60%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 220 100% 60%;
   }
 }
 
+/* ================= BASE STYLES ================= */
 @layer base {
   * {
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+
+    /* 🔥 Fast font fallback */
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont,
+                 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+
+    /* Heading font */
+    font-family: 'Montserrat', system-ui, sans-serif;
+  }
+}
+
+/* ================= COMPONENTS ================= */
+@layer components {
+  .hero-gradient {
+    background: var(--hero-gradient);
+  }
+
+  .cta-gradient {
+    background: var(--cta-gradient);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .shadow-cta {
+    box-shadow: var(--shadow-cta);
+  }
+}
+
+/* ================= UTILITIES ================= */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
   }
 }

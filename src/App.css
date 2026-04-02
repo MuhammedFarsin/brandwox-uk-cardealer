@@ -40,3 +40,7 @@
 .read-the-docs {
   color: #888;
 }
+
+.fade-in-once {
+  animation: fadeIn 0.6s ease forwards;
+}
