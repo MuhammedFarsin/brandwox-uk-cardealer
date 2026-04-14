@@ -54,8 +54,8 @@ const AboutUsSection = () => (
         <div className="grid grid-cols-2 gap-3 sm:gap-4">
           {[
             { value: "300%", label: "Average enquiry increase", bg: "bg-secondary" },
-            { value: "50+", label: "UK dealers served", bg: "bg-accent/10" },
-            { value: "5–7", label: "Days to go live", bg: "bg-accent/10" },
+            { value: "50+", label: "UK dealers served", bg: "bg-accent/100" },
+            { value: "5–7", label: "Days to go live", bg: "bg-accent/100" },
             { value: "5★", label: "Average client rating", bg: "bg-secondary" },
           ].map((item, index) => (
             <div
